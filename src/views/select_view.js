@@ -8,15 +8,15 @@ SelectView.prototype.bindEvents = function () {
 
 
   PubSub.subscribe("InstrumentFamilies:family-names", (evt) => {
-    const instrumentfamilies = evt.detail;
+    const instrumentFamilies = evt.detail;
     this.populateDropDown(instrumentFamilies);
   });
 
 
-  // this.element.addEventListener("change", (evt) => {
-  //   const selectedInstrumentFamily = evt.target.name;
-  //   console.log(selectedInstrumentFamily);
-  // });
+  this.element.addEventListener("change", (evt) => {
+    const selectedInstrumentFamily = evt.target.value;
+    PubSub.publish("SelectView:change", selectedInstrumentFamily);
+  });
 };
 
 SelectView.prototype.populateDropDown = function (instrumentFamilies) {
