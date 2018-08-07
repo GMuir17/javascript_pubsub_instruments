@@ -5,7 +5,10 @@ const SelectView = function (element) {
 };
 
 SelectView.prototype.bindEvents = function () {
-  console.log(this.element);
+  this.element.addEventListener("change", (event) => {
+    const selectedInstrumentFamily = event.target.name;
+    console.log(selectedInstrumentFamily);
+  });
 };
 
 

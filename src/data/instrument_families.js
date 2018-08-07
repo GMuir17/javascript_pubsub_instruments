@@ -1,3 +1,5 @@
+const PubSub = require("../helpers/pub_sub.js");
+
 const InstrumentFamilies = function() {
   this.instrumentFamilies = [
     {
@@ -27,5 +29,16 @@ const InstrumentFamilies = function() {
     }
   ];
 };
+
+InstrumentFamilies.prototype.bindEvents = function () {
+  const familyNames = this.getListOfFamilyNames();
+  PubSub.publish("InstrumentFamilies:family-names", familyNames);
+  console.log(familyNames);
+};
+
+InstrumentFamilies.prototype.getListOfFamilyNames = function () {
+  return this.instrumentFamilies.map(family => family.name);
+};
+
 
 module.exports = InstrumentFamilies;
