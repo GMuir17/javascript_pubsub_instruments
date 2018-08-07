@@ -31,14 +31,7 @@ const InstrumentFamilies = function() {
 };
 
 InstrumentFamilies.prototype.bindEvents = function () {
-  const familyNames = this.getListOfFamilyNames();
-  PubSub.publish("InstrumentFamilies:family-names", familyNames);
-  console.log(familyNames);
+  PubSub.publish("InstrumentFamilies:family-names", this.instrumentFamilies);
 };
-
-InstrumentFamilies.prototype.getListOfFamilyNames = function () {
-  return this.instrumentFamilies.map(family => family.name);
-};
-
 
 module.exports = InstrumentFamilies;

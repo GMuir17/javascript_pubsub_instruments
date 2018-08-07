@@ -5,13 +5,27 @@ const SelectView = function (element) {
 };
 
 SelectView.prototype.bindEvents = function () {
-  this.element.addEventListener("change", (event) => {
-    const selectedInstrumentFamily = event.target.name;
-    console.log(selectedInstrumentFamily);
+
+
+  PubSub.subscribe("InstrumentFamilies:family-names", (evt) => {
+    const instrumentfamilies = evt.detail;
+    this.populateDropDown(instrumentFamilies);
   });
+
+
+  // this.element.addEventListener("change", (evt) => {
+  //   const selectedInstrumentFamily = evt.target.name;
+  //   console.log(selectedInstrumentFamily);
+  // });
 };
 
-
+SelectView.prototype.populateDropDown = function (instrumentFamilies) {
+  instrumentFamilies.forEach(family => {
+    const option = document.createElement("option");
+    option.textContent = family.name;
+    this.element.appendChild(option);
+  });
+};
 
 
 
