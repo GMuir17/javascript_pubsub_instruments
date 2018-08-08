@@ -40,7 +40,7 @@ InstrumentFamilies.prototype.bindEvents = function () {
 };
 
 InstrumentFamilies.prototype.publishFamilyDetail = function (familyName) {
-  for (family of this.instrumentFamilies) {
+  for (let family of this.instrumentFamilies) {
     if (family.name === familyName) {
       PubSub.publish("InstrumentFamilies:selected-family-ready", family);
     };

@@ -19,8 +19,17 @@ InstrumentInfoView.prototype.render = function (instrument) {
   const instrumentDescription = document.createElement("p");
   instrumentDescription.textContent = instrument.description + ".";
 
+  const instrumentList = document.createElement("ul");
+
+  for (let oneInstrument of instrument.instruments) {
+    const instrumentListItem = document.createElement("li");
+    instrumentListItem.textContent = oneInstrument;
+    instrumentList.appendChild(instrumentListItem);
+  }
+
   this.container.appendChild(instrumentTitle);
   this.container.appendChild(instrumentDescription);
+  this.container.appendChild(instrumentList);
 };
 
 
